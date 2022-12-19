@@ -12,13 +12,16 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            topSection(context),
-          ],
-        ),
+      body: ListView(
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              topSection(context),
+              categorySection(),
+            ],
+          ),
+        ],
       ),
     );
   }
@@ -86,5 +89,58 @@ Widget topSection(BuildContext context) {
         ),
       ],
     ),
+  );
+}
+
+Widget categorySection() {
+  return Container(
+    margin: const EdgeInsets.symmetric(vertical: 25),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 20),
+          child: const Text('Shop By Category',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
+        ),
+        SizedBox(
+          width: 1000,
+          height: 180,
+          child: ListView(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            scrollDirection: Axis.horizontal,
+            children: [
+              categories('images/sneakers.png', 'Sneakers', 'F'),
+              categories('images/shoes.png', 'Shoes', 'F'),
+              categories('images/apparel.png', 'Apparel', 'F'),
+              categories('images/eletronics.png', 'Eletronics', 'F'),
+              categories('images/accessories.png', 'Accessories', 'T'),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget categories(String img, String title, String bool) {
+  return Row(
+    children: [
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+              margin: const EdgeInsets.only(top: 20, bottom: 15),
+              padding: const EdgeInsets.all(15),
+              height: 95,
+              width: 105,
+              color: const Color(0xFFF5F5F2),
+              child: Image.asset(img)),
+          Text(title,
+              style: const TextStyle(fontSize: 15, color: Colors.black)),
+        ],
+      ),
+      if (bool == 'F') const Padding(padding: EdgeInsets.only(right: 15)),
+    ],
   );
 }
