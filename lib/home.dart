@@ -20,6 +20,7 @@ class _MyHomePageState extends State<MyHomePage> {
               topSection(context),
               categorySection(),
               recommendSection(),
+              brandSection(),
             ],
           ),
         ],
@@ -208,39 +209,101 @@ Widget products(
         padding: const EdgeInsets.all(15),
         height: 400,
         width: 150,
+        child: productText(img, title, desc, price, sale, bool),
+      ),
+      if (bool == 'F') const Padding(padding: EdgeInsets.only(right: 15)),
+    ],
+  );
+}
+
+Widget productText(
+    String img, String title, String desc, int price, int sale, String bool) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Container(
+        padding: const EdgeInsets.only(top: 10),
+        margin: const EdgeInsets.only(bottom: 30),
+        child: Image.asset(img),
+      ),
+      Container(
+        margin: const EdgeInsets.only(bottom: 7),
+        child: Text(title,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 2,
+            style: const TextStyle(fontSize: 14, color: Colors.black)),
+      ),
+      Container(
+        margin: const EdgeInsets.only(bottom: 7),
+        child: Text(desc,
+            style: const TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF626262))),
+      ),
+      Container(
+        margin: const EdgeInsets.only(bottom: 7),
+        child: Text('\$$price',
+            style: const TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: Colors.black)),
+      ),
+      Text('Last Sale: \$$sale',
+          style: const TextStyle(fontSize: 13, color: Color(0xFF626262))),
+    ],
+  );
+}
+
+Widget brandSection() {
+  return Container(
+    margin: const EdgeInsets.symmetric(vertical: 10),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 20),
+          child: const Text('Popular Brands',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
+        ),
+        SizedBox(
+          width: 1000,
+          height: 230,
+          child: ListView(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            scrollDirection: Axis.horizontal,
+            children: [
+              brands('images/recomm1.png', 'Jordan', 'F'),
+              brands('images/recomm2.png', 'Supreme', 'F'),
+              brands('images/recomm3.png', 'Bearbrick', 'T'),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget brands(String img, String title, String bool) {
+  return Row(
+    children: [
+      Container(
+        color: const Color(0xFFF5F5F2),
+        margin: const EdgeInsets.only(top: 20, bottom: 15),
+        padding: const EdgeInsets.all(15),
+        width: 160,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: const EdgeInsets.only(top: 10),
-              margin: const EdgeInsets.only(bottom: 30),
+              margin: const EdgeInsets.only(bottom: 10),
               child: Image.asset(img),
             ),
             Container(
               margin: const EdgeInsets.only(bottom: 7),
               child: Text(title,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
                   style: const TextStyle(fontSize: 14, color: Colors.black)),
             ),
-            Container(
-              margin: const EdgeInsets.only(bottom: 7),
-              child: Text(desc,
-                  style: const TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF626262))),
-            ),
-            Container(
-              margin: const EdgeInsets.only(bottom: 7),
-              child: Text('\$$price',
-                  style: const TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black)),
-            ),
-            Text('Last Sale: \$$sale',
-                style: const TextStyle(fontSize: 13, color: Color(0xFF626262))),
           ],
         ),
       ),
