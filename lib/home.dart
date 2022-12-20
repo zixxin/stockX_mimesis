@@ -153,10 +153,39 @@ Widget recommendSection() {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 20),
-          child: const Text('Recommended For You',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              margin: const EdgeInsets.only(left: 20),
+              child: const Text('Recommended For You',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
+            ),
+            Container(
+              margin: const EdgeInsets.only(right: 15),
+              child: Row(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(right: 5),
+                    child: const Text('See All',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                            color: Color(0xFF226243))),
+                  ),
+                  IconButton(
+                      padding: EdgeInsets.zero,
+                      constraints: const BoxConstraints(),
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.arrow_forward_rounded,
+                        color: Color(0xFF226243),
+                        size: 18,
+                      )),
+                ],
+              ),
+            ),
+          ],
         ),
         SizedBox(
           width: 1000,
