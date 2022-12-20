@@ -67,39 +67,70 @@ Widget buySellSection() {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        buySellButton(const Color(0xFF2A6143), 106, 4),
-        buySellButton(Colors.black, 152, 13),
+        buySellButton(const Color(0xFF2A6143), 106, 4, const Color(0xFF083D20),
+            'Buy', 'Bid'),
+        buySellButton(
+            Colors.black, 152, 13, const Color(0xFF5E5E5E), 'Sell', 'Ask'),
       ],
     ),
   );
 }
 
-Widget buySellButton(Color? color, int price, int num) {
+Widget buySellButton(
+    Color? color, int price, int num, Color? divider, String opt, String or) {
   return Container(
-    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-    width: 165,
+    padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+    width: 170,
     height: 70,
     decoration: BoxDecoration(
       color: color,
       borderRadius: BorderRadius.circular(8),
     ),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.center,
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Container(
-          margin: const EdgeInsets.only(bottom: 3),
-          child: Text('\$$price',
-              style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold)),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              margin: const EdgeInsets.only(bottom: 3),
+              child: Text('\$$price',
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold)),
+            ),
+            Text('Size: US M $num',
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold)),
+          ],
         ),
-        Text('Size: US M $num',
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 13,
-            )),
+        VerticalDivider(
+          thickness: 1,
+          color: divider,
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              margin: const EdgeInsets.only(bottom: 3),
+              child: Text(opt,
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold)),
+            ),
+            Text('or $or',
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold)),
+          ],
+        ),
       ],
     ),
   );
