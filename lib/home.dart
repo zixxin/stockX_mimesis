@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dots_indicator/dots_indicator.dart';
+import 'item.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               topSection(context),
               categorySection(),
-              recommendSection(),
+              recommendSection(context),
               brandSection(),
             ],
           ),
@@ -151,7 +152,7 @@ Widget categories(String img, String title, String bool) {
   );
 }
 
-Widget recommendSection() {
+Widget recommendSection(BuildContext context) {
   return Container(
     margin: const EdgeInsets.symmetric(vertical: 10),
     child: Column(
@@ -177,21 +178,24 @@ Widget recommendSection() {
                   'Lowest Ask',
                   106,
                   116,
-                  'F'),
+                  'F',
+                  context),
               products(
                   'images/recomm2.png',
                   'Nike Dunk Low Retro White Black Panda (2022 Restock)',
                   'Lowest Ask',
                   158,
                   161,
-                  'F'),
+                  'F',
+                  context),
               products(
                   'images/recomm3.png',
                   'Jordan 1 Retro Low OGZion Williamson Vood',
                   'Lowest Ask',
                   205,
                   229,
-                  'T'),
+                  'T',
+                  context),
             ],
           ),
         ),
@@ -227,8 +231,8 @@ Widget seeAllButton() {
   );
 }
 
-Widget products(
-    String img, String title, String desc, int price, int sale, String bool) {
+Widget products(String img, String title, String desc, int price, int sale,
+    String bool, BuildContext context) {
   return Row(
     children: [
       Container(
@@ -242,22 +246,33 @@ Widget products(
         padding: const EdgeInsets.all(15),
         height: 400,
         width: 150,
-        child: productText(img, title, desc, price, sale, bool),
+        child: productText(img, title, desc, price, sale, bool, context),
       ),
       if (bool == 'F') const Padding(padding: EdgeInsets.only(right: 15)),
     ],
   );
 }
 
-Widget productText(
-    String img, String title, String desc, int price, int sale, String bool) {
+Widget productText(String img, String title, String desc, int price, int sale,
+    String bool, BuildContext context) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Container(
         padding: const EdgeInsets.only(top: 10),
         margin: const EdgeInsets.only(bottom: 30),
-        child: Image.asset(img),
+        child: GestureDetector(
+          child: Hero(
+            tag: '$img',
+            child: Image.asset(img),
+          ),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ItemPage()),
+            );
+          },
+        ),
       ),
       Container(
         margin: const EdgeInsets.only(bottom: 7),
