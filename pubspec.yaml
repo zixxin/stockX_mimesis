@@ -68,6 +68,12 @@ flutter:
     - images/recomm1.png
     - images/recomm2.png
     - images/recomm3.png
+    - images/brand1.png
+    - images/brand2.png
+    - images/brand3.png
+    - images/logo1.png
+    - images/logo2.png
+    - images/logo3.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

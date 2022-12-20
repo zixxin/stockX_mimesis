@@ -268,14 +268,14 @@ Widget brandSection() {
         ),
         SizedBox(
           width: 1000,
-          height: 230,
+          height: 170,
           child: ListView(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             scrollDirection: Axis.horizontal,
             children: [
-              brands('images/recomm1.png', 'Jordan', 'F'),
-              brands('images/recomm2.png', 'Supreme', 'F'),
-              brands('images/recomm3.png', 'Bearbrick', 'T'),
+              brands('images/brand1.png', 'Jordan', 'images/logo1.png', 'F'),
+              brands('images/brand2.png', 'Supreme', 'images/logo2.png', 'F'),
+              brands('images/brand3.png', 'Bearbrick', 'images/logo3.png', 'T'),
             ],
           ),
         ),
@@ -284,25 +284,39 @@ Widget brandSection() {
   );
 }
 
-Widget brands(String img, String title, String bool) {
+Widget brands(String img, String title, String logo, String bool) {
   return Row(
     children: [
       Container(
         color: const Color(0xFFF5F5F2),
         margin: const EdgeInsets.only(top: 20, bottom: 15),
-        padding: const EdgeInsets.all(15),
-        width: 160,
+        width: 170,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               margin: const EdgeInsets.only(bottom: 10),
-              child: Image.asset(img),
+              child: Image.asset(img, fit: BoxFit.fitWidth),
             ),
             Container(
-              margin: const EdgeInsets.only(bottom: 7),
-              child: Text(title,
-                  style: const TextStyle(fontSize: 14, color: Colors.black)),
+              margin: const EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                  SizedBox(
+                    height: 13,
+                    child: Image.asset(logo, fit: BoxFit.fitWidth),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
