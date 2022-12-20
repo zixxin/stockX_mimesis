@@ -94,17 +94,21 @@ Widget topSection(BuildContext context) {
   );
 }
 
+Widget title(String text) {
+  return Container(
+    margin: const EdgeInsets.symmetric(horizontal: 20),
+    child: Text(text,
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
+  );
+}
+
 Widget categorySection() {
   return Container(
     margin: const EdgeInsets.symmetric(vertical: 25),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 20),
-          child: const Text('Shop By Category',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
-        ),
+        title('Shop By Category'),
         SizedBox(
           width: 1000,
           height: 150,
@@ -156,35 +160,8 @@ Widget recommendSection() {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-              margin: const EdgeInsets.only(left: 20),
-              child: const Text('Recommended For You',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
-            ),
-            Container(
-              margin: const EdgeInsets.only(right: 15),
-              child: Row(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(right: 5),
-                    child: const Text('See All',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 17,
-                            color: Color(0xFF226243))),
-                  ),
-                  IconButton(
-                      padding: EdgeInsets.zero,
-                      constraints: const BoxConstraints(),
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.arrow_forward_rounded,
-                        color: Color(0xFF226243),
-                        size: 18,
-                      )),
-                ],
-              ),
-            ),
+            title('Recommended For You'),
+            seeAllButton(),
           ],
         ),
         SizedBox(
@@ -218,6 +195,33 @@ Widget recommendSection() {
             ],
           ),
         ),
+      ],
+    ),
+  );
+}
+
+Widget seeAllButton() {
+  return Container(
+    margin: const EdgeInsets.only(right: 15),
+    child: Row(
+      children: [
+        Container(
+          margin: const EdgeInsets.only(right: 5),
+          child: const Text('See All',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 17,
+                  color: Color(0xFF226243))),
+        ),
+        IconButton(
+            padding: EdgeInsets.zero,
+            constraints: const BoxConstraints(),
+            onPressed: () {},
+            icon: const Icon(
+              Icons.arrow_forward_rounded,
+              color: Color(0xFF226243),
+              size: 18,
+            )),
       ],
     ),
   );
@@ -290,11 +294,7 @@ Widget brandSection() {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 20),
-          child: const Text('Popular Brands',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
-        ),
+        title('Popular Brands'),
         SizedBox(
           width: 1000,
           height: 170,
