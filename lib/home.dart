@@ -206,11 +206,11 @@ Widget seeAllButton() {
     child: Row(
       children: [
         Container(
-          margin: const EdgeInsets.only(right: 5),
+          margin: const EdgeInsets.only(right: 4),
           child: const Text('See All',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 17,
+                  fontSize: 15,
                   color: Color(0xFF226243))),
         ),
         IconButton(
