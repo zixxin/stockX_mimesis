@@ -63,7 +63,7 @@ class _ItemPageState extends State<ItemPage> {
 
 Widget buySellSection() {
   return Container(
-    margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+    margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -78,60 +78,67 @@ Widget buySellSection() {
 
 Widget buySellButton(
     Color? color, int price, int num, Color? divider, String opt, String or) {
-  return Container(
-    padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-    width: 170,
-    height: 70,
-    decoration: BoxDecoration(
-      color: color,
-      borderRadius: BorderRadius.circular(8),
+  return TextButton(
+    style: ElevatedButton.styleFrom(
+      primary: Colors.white,
+      onPrimary: Colors.black,
     ),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              margin: const EdgeInsets.only(bottom: 3),
-              child: Text('\$$price',
+    onPressed: () {},
+    child: Container(
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      width: 170,
+      height: 70,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                margin: const EdgeInsets.only(bottom: 3),
+                child: Text('\$$price',
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold)),
+              ),
+              Text('Size: US M $num',
                   style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 20,
+                      fontSize: 12,
                       fontWeight: FontWeight.bold)),
-            ),
-            Text('Size: US M $num',
-                style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold)),
-          ],
-        ),
-        VerticalDivider(
-          thickness: 1,
-          color: divider,
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              margin: const EdgeInsets.only(bottom: 3),
-              child: Text(opt,
+            ],
+          ),
+          VerticalDivider(
+            thickness: 1,
+            color: divider,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                margin: const EdgeInsets.only(bottom: 3),
+                child: Text(opt,
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold)),
+              ),
+              Text('or $or',
                   style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 18,
+                      fontSize: 12,
                       fontWeight: FontWeight.bold)),
-            ),
-            Text('or $or',
-                style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold)),
-          ],
-        ),
-      ],
+            ],
+          ),
+        ],
+      ),
     ),
   );
 }
