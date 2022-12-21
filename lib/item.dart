@@ -130,7 +130,7 @@ Widget buySellButton(
                         fontSize: 18,
                         fontWeight: FontWeight.bold)),
               ),
-              Text('or $or',
+              Text('Or $or',
                   style: const TextStyle(
                       color: Colors.white,
                       fontSize: 12,
