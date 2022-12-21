@@ -261,6 +261,7 @@ Widget priceSection() {
           ),
           OutlinedButton(
             style: OutlinedButton.styleFrom(
+              primary: Colors.grey,
               side: const BorderSide(color: Colors.black, width: 1),
               shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(0))),
