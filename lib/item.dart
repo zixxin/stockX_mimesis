@@ -53,6 +53,7 @@ class _ItemPageState extends State<ItemPage> {
                 thickness: 1,
               ),
               productSection(context),
+              priceSection(),
             ],
           ),
         ],
@@ -221,4 +222,40 @@ Widget sellingFast(BuildContext context) {
       ],
     ),
   );
+}
+
+Widget priceSection() {
+  return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      child: Row(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                  margin: const EdgeInsets.only(bottom: 5),
+                  child: const Text(
+                    'Last Sale:',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  )),
+              const Text(
+                '\$144',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              Row(
+                children: const [
+                  Icon(Icons.arrow_drop_up, color: Color(0xFF276243), size: 40),
+                  Text(
+                    '\$27 (23.08%)',
+                    style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF276243)),
+                  ),
+                ],
+              ),
+            ],
+          )
+        ],
+      ));
 }
