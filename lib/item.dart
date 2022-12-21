@@ -114,10 +114,7 @@ Widget buySellButton(
                       fontWeight: FontWeight.bold)),
             ],
           ),
-          VerticalDivider(
-            thickness: 1,
-            color: divider,
-          ),
+          verticalDivider(divider),
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -143,6 +140,13 @@ Widget buySellButton(
   );
 }
 
+Widget verticalDivider(Color? divider) {
+  return VerticalDivider(
+    thickness: 1,
+    color: divider,
+  );
+}
+
 Widget productSection(BuildContext context) {
   return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -155,17 +159,66 @@ Widget productSection(BuildContext context) {
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           ),
           const Text('Bone (2022 Restock)', style: TextStyle(fontSize: 17)),
+          Container(
+            margin: const EdgeInsets.only(top: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+            color: const Color(0xFFF5F3F1),
+            child: const Text('Condition: New',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                )),
+          ),
           GestureDetector(
             child: Hero(
               tag: 'images/recomm1.png',
               child: Container(
                 margin:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                 child: Image.asset('images/recomm1.png'),
               ),
             ),
             onTap: () {},
           ),
+          sellingFast(context),
         ],
       ));
+}
+
+Widget sellingFast(BuildContext context) {
+  double width = MediaQuery.of(context).size.width;
+
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(8),
+      border: Border.all(
+        width: 1,
+        color: const Color(0xFFF4EDD4),
+      ),
+    ),
+    padding: const EdgeInsets.all(20),
+    width: width,
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Container(
+          margin: const EdgeInsets.only(right: 15),
+          child: const Icon(Icons.flash_on_sharp,
+              color: Color(0xFFEEBD47), size: 35),
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              margin: const EdgeInsets.only(bottom: 5),
+              child: const Text('This Product Is Selling Fast',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+            ),
+            const Text('843 Purchases In The Last 3 Days',
+                style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+          ],
+        ),
+      ],
+    ),
+  );
 }
