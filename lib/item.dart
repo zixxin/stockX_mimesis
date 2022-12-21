@@ -191,6 +191,7 @@ Widget sellingFast(BuildContext context) {
 
   return Container(
     decoration: BoxDecoration(
+      color: const Color(0xFFFAFAFA),
       borderRadius: BorderRadius.circular(8),
       border: Border.all(
         width: 1,
@@ -246,7 +247,7 @@ Widget priceSection() {
               ),
               Row(
                 children: const [
-                  Icon(Icons.arrow_drop_up, color: Color(0xFF276243), size: 40),
+                  Icon(Icons.arrow_drop_up, color: Color(0xFF276243), size: 25),
                   Text(
                     '\$27 (23.08%)',
                     style: TextStyle(
