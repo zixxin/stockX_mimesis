@@ -82,7 +82,7 @@ Widget buySellButton(
   return TextButton(
     style: ElevatedButton.styleFrom(
       primary: Colors.white,
-      onPrimary: Colors.black,
+      onPrimary: Colors.grey,
     ),
     onPressed: () {},
     child: Container(
