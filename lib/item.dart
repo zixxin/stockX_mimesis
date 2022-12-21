@@ -175,7 +175,7 @@ Widget productSection(BuildContext context) {
               tag: 'images/recomm1.png',
               child: Container(
                 margin:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                 child: Image.asset('images/recomm1.png'),
               ),
             ),
@@ -228,6 +228,8 @@ Widget priceSection() {
   return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -255,7 +257,27 @@ Widget priceSection() {
                 ],
               ),
             ],
-          )
+          ),
+          OutlinedButton(
+            style: OutlinedButton.styleFrom(
+              side: const BorderSide(color: Colors.black, width: 1),
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(0))),
+            ),
+            onPressed: () {},
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Text(
+                  'View Market Data',
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
+              ],
+            ),
+          ),
         ],
       ));
 }
