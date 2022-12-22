@@ -8,6 +8,48 @@ class ItemPage extends StatefulWidget {
 }
 
 class _ItemPageState extends State<ItemPage> {
+  List<String> dropdownList = [
+    'All',
+    '220',
+    '230',
+    '240',
+    '250',
+    '260',
+    '270',
+    '280'
+  ];
+
+  String selectedDropdown = 'All';
+
+  Widget dropdownButton(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
+    return Container(
+        width: width,
+        margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
+        child: DropdownButton(
+          isExpanded: true,
+          icon: const Icon(Icons.keyboard_arrow_down_rounded,
+              color: Colors.black, size: 30),
+          value: selectedDropdown,
+          items: dropdownList.map((String item) {
+            return DropdownMenuItem<String>(
+              value: item,
+              child: Text(
+                item,
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+              ),
+            );
+          }).toList(),
+          onChanged: (dynamic value) {
+            setState(() {
+              selectedDropdown = value;
+            });
+          },
+        ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,6 +90,7 @@ class _ItemPageState extends State<ItemPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              dropdownButton(context),
               buySellSection(),
               const Divider(
                 thickness: 1,
@@ -64,7 +107,7 @@ class _ItemPageState extends State<ItemPage> {
 
 Widget buySellSection() {
   return Container(
-    margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+    margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -150,7 +193,7 @@ Widget verticalDivider(Color? divider) {
 
 Widget productSection(BuildContext context) {
   return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -175,7 +218,7 @@ Widget productSection(BuildContext context) {
               tag: 'images/recomm1.png',
               child: Container(
                 margin:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                 child: Image.asset('images/recomm1.png'),
               ),
             ),
@@ -251,7 +294,7 @@ Widget priceSection() {
                   Text(
                     '\$27 (23.08%)',
                     style: TextStyle(
-                        fontSize: 13,
+                        fontSize: 12,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFF276243)),
                   ),
