@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
 
 class ItemPage extends StatefulWidget {
   const ItemPage({Key? key}) : super(key: key);
@@ -8,7 +9,7 @@ class ItemPage extends StatefulWidget {
 }
 
 class _ItemPageState extends State<ItemPage> {
-  List<String> dropdownList = [
+  final List<String> items = [
     'All',
     '220',
     '230',
@@ -25,29 +26,57 @@ class _ItemPageState extends State<ItemPage> {
     double width = MediaQuery.of(context).size.width;
 
     return Container(
-        width: width,
-        margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
-        child: DropdownButton(
+      width: width,
+      margin: const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 10),
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton2(
           isExpanded: true,
-          icon: const Icon(Icons.keyboard_arrow_down_rounded,
-              color: Colors.black, size: 30),
+          items: items
+              .map((item) => DropdownMenuItem<String>(
+                    value: item,
+                    child: Row(
+                      children: [
+                        Text(
+                          item,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15),
+                        ),
+                      ],
+                    ),
+                  ))
+              .toList(),
           value: selectedDropdown,
-          items: dropdownList.map((String item) {
-            return DropdownMenuItem<String>(
-              value: item,
-              child: Text(
-                item,
-                style:
-                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-              ),
-            );
-          }).toList(),
-          onChanged: (dynamic value) {
+          onChanged: (value) {
             setState(() {
-              selectedDropdown = value;
+              selectedDropdown = value as String;
             });
           },
-        ));
+          icon: const Icon(Icons.keyboard_arrow_down_rounded,
+              color: Colors.black),
+          iconSize: 30,
+          buttonHeight: 50,
+          buttonPadding: const EdgeInsets.only(left: 20, right: 15),
+          buttonDecoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(
+              color: Colors.black,
+            ),
+            color: Colors.white,
+          ),
+          itemHeight: 45,
+          itemPadding: const EdgeInsets.only(left: 15),
+          dropdownMaxHeight: 200,
+          dropdownWidth: 353,
+          dropdownDecoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          dropdownElevation: 8,
+          scrollbarRadius: const Radius.circular(40),
+          scrollbarThickness: 6,
+          scrollbarAlwaysShow: false,
+        ),
+      ),
+    );
   }
 
   @override
@@ -217,8 +246,8 @@ Widget productSection(BuildContext context) {
             child: Hero(
               tag: 'images/recomm1.png',
               child: Container(
-                margin:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                margin: const EdgeInsets.only(
+                    left: 30, right: 30, top: 40, bottom: 10),
                 child: Image.asset('images/recomm1.png'),
               ),
             ),
