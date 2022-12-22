@@ -10,7 +10,7 @@ class ItemPage extends StatefulWidget {
 
 class _ItemPageState extends State<ItemPage> {
   final List<String> items = [
-    'All',
+    'Size',
     '220',
     '230',
     '240',
@@ -20,7 +20,7 @@ class _ItemPageState extends State<ItemPage> {
     '280'
   ];
 
-  String selectedDropdown = 'All';
+  String selectedDropdown = 'Size';
 
   Widget dropdownButton(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
