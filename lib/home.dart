@@ -263,7 +263,7 @@ Widget productText(String img, String title, String desc, int price, int sale,
         margin: const EdgeInsets.only(bottom: 30),
         child: GestureDetector(
           child: Hero(
-            tag: '$img',
+            tag: img,
             child: Image.asset(img),
           ),
           onTap: () {

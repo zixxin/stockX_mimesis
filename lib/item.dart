@@ -27,7 +27,7 @@ class _ItemPageState extends State<ItemPage> {
 
     return Container(
       width: width,
-      margin: const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 10),
+      margin: const EdgeInsets.only(left: 20, right: 20, top: 15, bottom: 10),
       child: DropdownButtonHideUnderline(
         child: DropdownButton2(
           isExpanded: true,
@@ -66,7 +66,7 @@ class _ItemPageState extends State<ItemPage> {
           itemHeight: 45,
           itemPadding: const EdgeInsets.only(left: 15),
           dropdownMaxHeight: 200,
-          dropdownWidth: 353,
+          dropdownWidth: 350,
           dropdownDecoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
           ),
@@ -136,7 +136,7 @@ class _ItemPageState extends State<ItemPage> {
 
 Widget buySellSection() {
   return Container(
-    margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+    margin: const EdgeInsets.symmetric(horizontal: 10),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -159,7 +159,7 @@ Widget buySellButton(
     onPressed: () {},
     child: Container(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-      width: 170,
+      width: 169,
       height: 70,
       decoration: BoxDecoration(
         color: color,
@@ -247,7 +247,7 @@ Widget productSection(BuildContext context) {
               tag: 'images/recomm1.png',
               child: Container(
                 margin: const EdgeInsets.only(
-                    left: 30, right: 30, top: 40, bottom: 10),
+                    left: 30, right: 30, top: 25, bottom: 10),
                 child: Image.asset('images/recomm1.png'),
               ),
             ),
